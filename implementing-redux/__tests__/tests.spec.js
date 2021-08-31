@@ -1,5 +1,4 @@
-import Dedux from '../dedux'
-const { createStore, applyMiddleware } = Dedux
+import { createStore, applyMiddleware } from '../dedux'
 
 /*======================================================
                           TESTS
@@ -38,7 +37,18 @@ describe('dedux', () => {
 
       it(`dispatch should take any dispatched action and run it 
           through the reducer function to produce a new state.`, () => {
-        const reducer = () => {} // Your reducer function here!
+        const reducer = (state = { foo: 'bar' }, action = {}) => {
+          let nextState = {}
+          switch (action.type) {
+            case 'BAZIFY':
+              nextState = {
+                foo: 'baz',
+              }
+              return nextState
+            default:
+              return state
+          }
+        }
 
         const store = createStore(reducer)
 
@@ -98,7 +108,7 @@ describe('dedux', () => {
     })
   })
 
-  describe.skip('applyMiddleware', () => {
+  describe('applyMiddleware', () => {
     // Don't start this until you've completed part 2 of the challenge
     it('can apply middleware to dispatched actions', () => {
       const reducer = () => null
