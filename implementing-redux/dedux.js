@@ -42,4 +42,13 @@ const configureStore = (reducer, persistedState) => {
   return store
 }
 
+// const combineReducers = reducers => {
+//   return (state = {}, action) => {
+//     return Object.keys(reducers).reduce((nextState, key) => {
+//       nextState[key] = reducers[key](state[key], action)
+//       return nextState
+//     }, {})
+//   }
+// }
+
 export { createStore, configureStore, applyMiddleware }

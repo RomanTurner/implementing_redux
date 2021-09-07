@@ -16,8 +16,6 @@ export const reducer = (state = { count: 0 }, action = {}) => {
         count: action.payload.count,
       }
       return nextState
-    case 'INITIALIZE':
-      return state
     default:
       return state
   }
